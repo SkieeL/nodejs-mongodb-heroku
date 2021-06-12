@@ -30,7 +30,11 @@ app.use(cors(corsOptions));
 
 // Routes
 app.use('/', require('./routes/index'))
-app.use('/user', require('./routes/user'))
+
+app.use('/ticket', require('.routes/ticket'))
+app.use('/cliente', require('.routes/cliente'))
+app.use('/empleado', require('.routes/empleado'))
+app.use('/plan', require('.routes/plan'))
 
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`App up on port ${port}..`))
