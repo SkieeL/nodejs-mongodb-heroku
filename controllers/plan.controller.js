@@ -1,10 +1,10 @@
 const db = require('../models/db');
 
-// Devuelve todos los tickets
+// Devuelve todos los planes
 exports.findAll = (req, res) => {
     var condition = {};
 
-    db.getInstance().collection('tickets').find(condition).toArray().then(data => {
+    db.getInstance().collection('planes').find(condition).toArray().then(data => {
         res.send(data);
     })
         .catch(err => {
