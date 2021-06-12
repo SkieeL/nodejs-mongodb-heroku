@@ -1,6 +1,6 @@
 const db = require('../models/db');
 
-// Retrieve all empleados from the database.
+// Devuelve todos los empleados
 exports.findAll = (req, res) => {
     var condition = {};
 
