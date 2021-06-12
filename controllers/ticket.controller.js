@@ -1,8 +1,10 @@
 const db = require('../models/db');
-const tickets = db.getInstance().collection('tickets');
 
+// Retrieve all users from the database.
 exports.findAll = (req, res) => {
-    tickets.find({}).toArray().then(data => {
+    var condition = {};
+
+    db.getInstance().collection('users').find(condition).toArray().then(data => {
         res.send(data);
     })
         .catch(err => {
