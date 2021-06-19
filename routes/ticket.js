@@ -14,7 +14,7 @@ router.get('/ticketsZona1', TicketController.ticketsZona1);
 
 router.get('/ticketsCombateDeLosPozos', TicketController.ticketsCombateDeLosPozos);
 
-router.get('/ultimos3BanfieldLanus', TicketController.ultimos3BanfieldLanus);
+router.get('/ticketsBanfieldLanus', TicketController.ticketsBanfieldLanus);
 
 router.get('/todosMenosBanfieldLanus', TicketController.todosMenosBanfieldLanus);
 

@@ -142,8 +142,8 @@ exports.ticketsCombateDeLosPozos = (req, res) => {
     });
 };
 
-// 11. Mostrar los últimos 3 tickets creados en Lanús o Banfield
-exports.ultimos3BanfieldLanus = (req, res) => {
+// 11. Mostrar tickets creados en Banfield o Lanús
+exports.ticketsBanfieldLanus = (req, res) => {
     var condition = { 
         $or: [ 
             { "cliente.ubicacion.localidad.nombre": "Banfield" }, 
@@ -151,7 +151,7 @@ exports.ultimos3BanfieldLanus = (req, res) => {
         ] 
     };
 
-    db.getInstance().collection('tickets').find(condition).limit(3).toArray().then(data => {
+    db.getInstance().collection('tickets').find(condition).toArray().then(data => {
         res.send(data);
     })
     .catch(err => {
@@ -162,7 +162,7 @@ exports.ultimos3BanfieldLanus = (req, res) => {
     });
 };
 
-// 12. Mostrar todos los tickets creados excepto los de Lanús o Banfield
+// 12. Mostrar todos los tickets creados excepto los de Banfield o Lanús
 exports.todosMenosBanfieldLanus = (req, res) => {
     var condition = { 
         "cliente.ubicacion.localidad.nombre": { $nin: [ "Banfield", "Lanús" ] } 
