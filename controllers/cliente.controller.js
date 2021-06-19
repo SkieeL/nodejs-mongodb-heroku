@@ -53,7 +53,9 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
         ] 
     };
 
-    db.getInstance().collection('clientes').find(condition).count().then(data => {
+    res.send(db.getInstance().collection('clientes').find(condition).count());
+
+    /*db.getInstance().collection('clientes').find(condition).count().then(data => {
         res.send(data);
     })
     .catch(err => {
@@ -61,7 +63,7 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
             message:
                 err.message || "Some error occurred."
         });
-    });
+    });*/
 };
 
 // 7. Mostrar clientes que se encuentran a menos de 10km de las oficinas "Soporte técnico 001"
