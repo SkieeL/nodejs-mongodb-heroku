@@ -52,7 +52,7 @@ exports.empleadosClientesGeneraronTicket = (req, res) => {
                     {
                         $match: {
                             $expr: {
-                                $eq: [ "$dni.cliente", "$$dni" ]
+                                $eq: [ "$cliente.dni", "$$dni" ]
                             }
                         }
                     }
