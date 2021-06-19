@@ -34,7 +34,8 @@ app.use('/', require('./routes/index'))
 app.use('/ticket', require('./routes/ticket'))
 app.use('/cliente', require('./routes/cliente'))
 app.use('/empleado', require('./routes/empleado'))
-//app.use('/plan', require('./routes/plan'))
+app.use('/plan', require('./routes/plan'))
+app.use('/oficina', require('./routes/oficina'))
 
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`App up on port ${port}..`))
