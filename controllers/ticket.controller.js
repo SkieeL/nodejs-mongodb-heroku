@@ -75,6 +75,7 @@ exports.operacSopTecLanBanAvell = (req, res) => {
         { 
             $project: { 
                 area: "$historial.empleado.area", 
+                localidad: "$cliente.ubicacion.localidad.nombre",
                 operacion: "$historial.operacion" 
             } 
         } 
