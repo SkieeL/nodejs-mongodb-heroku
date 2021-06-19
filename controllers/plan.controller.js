@@ -7,10 +7,10 @@ exports.findAll = (req, res) => {
     db.getInstance().collection('planes').find(condition).toArray().then(data => {
         res.send(data);
     })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred."
-            });
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred."
         });
+    });
 };

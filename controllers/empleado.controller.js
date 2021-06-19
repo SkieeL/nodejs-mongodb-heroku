@@ -7,42 +7,37 @@ exports.findAll = (req, res) => {
     db.getInstance().collection('empleados').find(condition).toArray().then(data => {
         res.send(data);
     })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred."
-            });
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred."
         });
+    });
 };
 
 // 2. Mostrar TOP 3 empleados que más tickets respondieron
 exports.empleadosMasTicketsResponden = (req, res) => {
     var condition = [ 
         { 
-            $project: 
-            { 
+            $project: { 
                 nombre: 1, 
                 apellido: 1, 
                 "cantidad_tickets_respondidos": { $size: "$tickets_respondidos" } 
             } 
         },
-        { 
-            $sort: { "cantidad_tickets_respondidos": -1 } 
-        }, 
-        {
-            $limit: 3
-        } 
+        { $sort: { "cantidad_tickets_respondidos": -1 } }, 
+        { $limit: 3 } 
     ];
 
     db.getInstance().collection('empleados').aggregate(condition).toArray().then(data => {
         res.send(data);
     })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred."
-            });
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred."
         });
+    });
 };
 
 // 10. Mostrar empleados que son clientes y generaron tickets
@@ -65,19 +60,17 @@ exports.empleadosClientesGeneraronTicket = (req, res) => {
             }
         },
         {
-            $match: {
-                "tickets_generados": { $not: { $size: 0 } }
-            }
+            $match: { "tickets_generados": { $not: { $size: 0 } } }
         }
     ];
 
     db.getInstance().collection('empleados').aggregate(condition).toArray().then(data => {
         res.send(data);
     })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred."
-            });
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred."
         });
+    });
 };
