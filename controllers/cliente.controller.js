@@ -66,14 +66,13 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
 
 // 7. Mostrar clientes que se encuentran a menos de 10km de las oficinas "Soporte técnico 001"
 exports.clientesCercanosSopTec = (req, res) => {
-    db.getInstance().collection('oficinas').findOne({ nombre_oficina: "Soporte técnico 001" }, { _id: 0, "ubicacion_geo": "$ubicacion.ubicacion_geo" }).then(data => {
-        var ubicacion_soptec001 = data;
-        res.send(ubicacion_soptec001);
+    db.getInstance().collection('oficinas').findOne({ nombre_oficina: "Soporte técnico 001" }).then(data => {
+        var soptec001 = data;
 
-        /*var condition = { 
+        var condition = { 
             "ubicacion.ubicacion_geo": { 
                 $near: { 
-                    $geometry: ubicacion_soptec001.ubicacion_geo, 
+                    $geometry: soptec001.ubicacion.ubicacion_geo, 
                     $maxDistance: 10000 
                 } 
             } 
@@ -87,7 +86,7 @@ exports.clientesCercanosSopTec = (req, res) => {
                 message:
                     err.message || "Some error occurred."
             });
-        });*/
+        });
     })
     .catch(err => {
         res.status(500).send({
