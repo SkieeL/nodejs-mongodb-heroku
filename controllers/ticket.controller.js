@@ -17,10 +17,7 @@ exports.findAll = (req, res) => {
 
 // 1. Listar los desperfectos
 exports.listarDesperfectos = (req, res) => {
-    var condition = { "tipo_ticket": { $eq: "Desperfecto" } };
-    var projection = { motivo: 1 };
-
-    db.getInstance().collection('tickets').find(condition, projection).toArray().then(data => {
+    db.getInstance().collection('tickets').find({ "tipo_ticket": { $eq: "Desperfecto"} }, { motivo: 1 }).toArray().then(data => {
         res.send(data);
     })
         .catch(err => {
