@@ -93,7 +93,7 @@ exports.operacSopTecLanBanAvell = (req, res) => {
 };
 
 // 8. Mostrar la cantidad de tickets en la ZONA 1
-exports.cantidadTicketsZona1 = (req, res) => {
+exports.ticketsZona1 = (req, res) => {
     var condition = { 
         "cliente.ubicacion.ubicacion_geo": { 
             $geoWithin: { 

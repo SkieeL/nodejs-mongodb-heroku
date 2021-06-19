@@ -10,7 +10,7 @@ router.get('/cantTicketsSinResolverLoc', TicketController.cantTicketsSinResolver
 
 router.get('/operacSopTecLanBanAvell', TicketController.operacSopTecLanBanAvell);
 
-router.get('/cantidadTicketsZona1', TicketController.cantidadTicketsZona1);
+router.get('/ticketsZona1', TicketController.ticketsZona1);
 
 router.get('/ticketsCombateDeLosPozos', TicketController.ticketsCombateDeLosPozos);
 
