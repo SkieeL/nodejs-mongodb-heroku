@@ -22,7 +22,7 @@ exports.empleadosMasTicketsResponden = (req, res) => {
             $project: { 
                 nombre: 1, 
                 apellido: 1, 
-                "cantidad_tickets_respondidos": { $size: "$tickets_respondidos" } 
+                cantidad_tickets_respondidos: 1
             } 
         },
         { $sort: { "cantidad_tickets_respondidos": -1 } }, 
