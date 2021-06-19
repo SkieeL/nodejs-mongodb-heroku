@@ -68,8 +68,9 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
 exports.clientesCercanosSopTec = (req, res) => {
     db.getInstance().collection('oficinas').findOne({ nombre_oficina: "Soporte técnico 001" }, { _id: 0, "ubicacion_geo": "$ubicacion.ubicacion_geo" }).then(data => {
         var ubicacion_soptec001 = data;
+        res.send(ubicacion_soptec001);
 
-        var condition = { 
+        /*var condition = { 
             "ubicacion.ubicacion_geo": { 
                 $near: { 
                     $geometry: ubicacion_soptec001.ubicacion_geo, 
@@ -86,7 +87,7 @@ exports.clientesCercanosSopTec = (req, res) => {
                 message:
                     err.message || "Some error occurred."
             });
-        });
+        });*/
     })
     .catch(err => {
         res.status(500).send({
