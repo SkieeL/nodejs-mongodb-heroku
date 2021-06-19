@@ -53,7 +53,7 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
         ] 
     };
 
-    db.getInstance().collection('clientes').find(condition).toArray().then(data => {
+    db.getInstance().collection('clientes').find(condition).count().toArray().then(data => {
         res.send(data);
     })
     .catch(err => {

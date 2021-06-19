@@ -17,7 +17,7 @@ exports.findAll = (req, res) => {
 
 // 1. Listar los desperfectos
 exports.listarDesperfectos = (req, res) => {
-    db.getInstance().collection('tickets').find({ "tipo_ticket": { $eq: "Desperfecto"} }, { motivo: 1 }).toArray().then(data => {
+    db.getInstance().collection('tickets').find({ "tipo_ticket": { $eq: "Desperfecto"} }, { motivo: 1 }).sort({ motivo: 1 }).toArray().then(data => {
         res.send(data);
     })
     .catch(err => {
@@ -151,7 +151,7 @@ exports.ultimos3BanfieldLanus = (req, res) => {
         ] 
     };
 
-    db.getInstance().collection('tickets').find(condition).toArray().then(data => {
+    db.getInstance().collection('tickets').find(condition).limit(3).toArray().then(data => {
         res.send(data);
     })
     .catch(err => {
