@@ -85,7 +85,7 @@ exports.clientesCercanosSopTec = (req, res) => {
                     direccion: "$ubicacion.direccion",
                     localidad: "$ubicacion.localidad.nombre",
                     provincia: "$ubicacion.provincia",
-                    distancia: 1
+                    distancia: "$distancia"
                 }
             }
         ];
