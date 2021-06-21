@@ -81,6 +81,7 @@ exports.operacSopTecLanBanAvell = (req, res) => {
         { $match: { "historial.empleado.area": "Soporte técnico" } }, 
         { 
             $project: { 
+                _id: 0,
                 area: "$historial.empleado.area", 
                 localidad: "$cliente.ubicacion.localidad.nombre",
                 operacion: "$historial.operacion" 
