@@ -44,6 +44,7 @@ exports.cantTicketsSinResolverLoc = (req, res) => {
         },
         {
             $project: {
+                _id: 0,
                 localidad: "$_id",
                 total: "$total"
             }
