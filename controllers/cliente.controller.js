@@ -73,7 +73,7 @@ exports.clientesCercanosSopTec = (req, res) => {
             {
                 $geoNear: {
                     near: soptec001.ubicacion_geo,
-                    distanceField: "distancia",
+                    distanceField: "dist.calculated",
                     maxDistance: 5000
                 }
             },
