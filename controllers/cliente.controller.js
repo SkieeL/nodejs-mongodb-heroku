@@ -73,7 +73,7 @@ exports.clientesCercanosSopTec = (req, res) => {
             {
                 $geoNear: {
                     near: soptec001.ubicacion.ubicacion_geo,
-                    distanceField: "dist.calculated",
+                    distanceField: "distancia",
                     maxDistance: 5000
                 }
             },
@@ -84,7 +84,8 @@ exports.clientesCercanosSopTec = (req, res) => {
                     apellido: 1,
                     direccion: "$ubicacion.direccion",
                     localidad: "$ubicacion.localidad.nombre",
-                    provincia: "$ubicacion.provincia"
+                    provincia: "$ubicacion.provincia",
+                    distancia: 1
                 }
             }
         ];
