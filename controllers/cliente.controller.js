@@ -28,7 +28,7 @@ exports.promedioCuotasAbonadas = (req, res) => {
         { 
             $project: { 
                 _id: 0, 
-                promedio: "$promedio" 
+                cuota_promedio: "$promedio" 
             } 
         } 
     ];
@@ -54,7 +54,7 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
     };
 
     db.getInstance().collection('clientes').find(condition).count().then(data => {
-        res.send({ "cantidad": data });
+        res.send({ "cantidad_clientes": data });
     })
     .catch(err => {
         res.status(500).send({
