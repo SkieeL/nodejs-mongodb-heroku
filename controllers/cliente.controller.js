@@ -56,9 +56,7 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
     //res.send(db.getInstance().collection('clientes').find(condition).count());
 
     db.getInstance().collection('clientes').find(condition).count().then(data => {
-        let respuesta;
-        respuesta.cantidad = data;
-        res.send(respuesta);
+        res.send({ "cantidad": data });
     })
     .catch(err => {
         res.status(500).send({
