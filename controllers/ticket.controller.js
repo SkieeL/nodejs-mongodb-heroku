@@ -15,7 +15,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// 1. Listar todos los tickets de tipo "Desperfecto" ordenados por motivo
+// 1. Listar tickets de tipo "Desperfecto" ordenados por motivo
 exports.listarDesperfectos = (req, res) => {
     db.getInstance().collection('tickets').find({ "tipo_ticket": { $eq: "Desperfecto" } }).sort({ motivo: 1 }).toArray().then(data => {
         res.send(data);
@@ -62,7 +62,7 @@ exports.cantTicketsSinResolverLoc = (req, res) => {
     });
 };
 
-// 6. Operaciones realizadas por el área de Soporte técnico a clientes de Lanús, Banfield o Avellaneda
+// 6. Operaciones del área de soporte técnico (Lanús, Banfield, Avellaneda)
 exports.operacSopTecLanBanAvell = (req, res) => {
     var condition = [ 
         {
@@ -130,7 +130,7 @@ exports.ticketsZona1 = (req, res) => {
     });
 };
 
-// 9. Tickets creados por clientes que residen sobre la calle "Combate de los Pozos" (CABA)
+// 9. Tickets generados en calle "Combate de los Pozos" (CABA)
 exports.ticketsCombateDeLosPozos = (req, res) => {
     var condition = { 
         $and: [ 

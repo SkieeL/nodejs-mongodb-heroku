@@ -64,7 +64,7 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
     });
 };
 
-// 7. Clientes que se encuentran a menos de 10km de las oficinas "Soporte técnico 001"
+// 7. Clientes a menos de 5km de las oficinas "Soporte técnico 001"
 exports.clientesCercanosSopTec = (req, res) => {
     db.getInstance().collection('oficinas').findOne({ nombre_oficina: "Soporte técnico 001" }).then(data => {
         var soptec001 = data;
