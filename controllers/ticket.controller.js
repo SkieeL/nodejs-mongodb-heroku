@@ -46,7 +46,7 @@ exports.cantTicketsSinResolverLoc = (req, res) => {
             $project: {
                 _id: 0,
                 localidad: "$_id",
-                total: "$total"
+                tickets_sin_resolver: "$total"
             }
         }
     ];
@@ -120,7 +120,7 @@ exports.ticketsZona1 = (req, res) => {
     };
 
     db.getInstance().collection('tickets').find(condition).count().then(data => {
-        res.send({ "cantidad_clientes": data });
+        res.send({ "cantidad_tickets": data });
     })
     .catch(err => {
         res.status(500).send({
