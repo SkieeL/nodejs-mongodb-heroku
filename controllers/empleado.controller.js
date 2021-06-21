@@ -20,6 +20,7 @@ exports.empleadosMasTicketsResponden = (req, res) => {
     var condition = [ 
         { 
             $project: { 
+                _id: 0,
                 nombre: 1, 
                 apellido: 1, 
                 cantidad_tickets_respondidos: 1

@@ -15,9 +15,9 @@ exports.findAll = (req, res) => {
     });
 };
 
-// 1. Listar los desperfectos
+// 1. Listar todos los tickets de tipo "Desperfecto" ordenados por motivo
 exports.listarDesperfectos = (req, res) => {
-    db.getInstance().collection('tickets').find({ "tipo_ticket": { $eq: "Desperfecto" } }, { motivo: 1 }).sort({ motivo: -1 }).toArray().then(data => {
+    db.getInstance().collection('tickets').find({ "tipo_ticket": { $eq: "Desperfecto" } }).sort({ motivo: 1 }).toArray().then(data => {
         res.send(data);
     })
     .catch(err => {
