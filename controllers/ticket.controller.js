@@ -119,8 +119,8 @@ exports.ticketsZona1 = (req, res) => {
         } 
     };
 
-    db.getInstance().collection('tickets').find(condition).toArray().then(data => {
-        res.send(data);
+    db.getInstance().collection('tickets').find(condition).count().then(data => {
+        res.send({ "cantidad_clientes": data });
     })
     .catch(err => {
         res.status(500).send({
