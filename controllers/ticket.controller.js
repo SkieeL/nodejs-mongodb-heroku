@@ -28,7 +28,7 @@ exports.listarDesperfectos = (req, res) => {
     });
 };
 
-// 3. Mostrar cantidad de tickets sin resolver agrupando por localidad
+// 3. Cantidad de tickets sin resolver agrupando por localidad
 exports.cantTicketsSinResolverLoc = (req, res) => {
     var condition = [ 
         { 
@@ -41,7 +41,13 @@ exports.cantTicketsSinResolverLoc = (req, res) => {
                 _id: "$cliente.ubicacion.localidad.nombre", 
                 total: { $sum: 1 } 
             } 
-        } 
+        },
+        {
+            $project: {
+                localidad: "$_id",
+                total: "$total"
+            }
+        }
     ];
 
     db.getInstance().collection('tickets').aggregate(condition).toArray().then(data => {

@@ -15,7 +15,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// 2. Mostrar TOP 3 empleados que más tickets respondieron
+// 2. Los 3 empleados que más tickets respondieron
 exports.empleadosMasTicketsResponden = (req, res) => {
     var condition = [ 
         { 
