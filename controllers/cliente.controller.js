@@ -72,7 +72,7 @@ exports.clientesCercanosSopTec = (req, res) => {
         var condition = [
             {
                 $geoNear: {
-                    near: ubicacion_soptec001.ubicacion_geo,
+                    near: soptec001.ubicacion_geo,
                     distanceField: "distancia",
                     maxDistance: 5000
                 }
