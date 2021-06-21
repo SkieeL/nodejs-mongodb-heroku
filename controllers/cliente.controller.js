@@ -44,7 +44,7 @@ exports.promedioCuotasAbonadas = (req, res) => {
     });
 };
 
-// 5. Cantidad de clientes que pagan entre $1.000 y $1.200
+// 5. Cantidad de clientes que abonan entre $1.000 y $1.200
 exports.cantidadClientesPaganXMonto = (req, res) => {
     var condition = { 
         $and: [ 
@@ -53,9 +53,9 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
         ] 
     };
 
-    res.send(db.getInstance().collection('clientes').find(condition).count());
+    //res.send(db.getInstance().collection('clientes').find(condition).count());
 
-    /*db.getInstance().collection('clientes').find(condition).count().then(data => {
+    db.getInstance().collection('clientes').find(condition).then(data => {
         res.send(data);
     })
     .catch(err => {
@@ -63,7 +63,7 @@ exports.cantidadClientesPaganXMonto = (req, res) => {
             message:
                 err.message || "Some error occurred."
         });
-    });*/
+    });
 };
 
 // 7. Mostrar clientes que se encuentran a menos de 10km de las oficinas "Soporte técnico 001"
