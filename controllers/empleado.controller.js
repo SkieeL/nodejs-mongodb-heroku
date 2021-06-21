@@ -41,7 +41,7 @@ exports.empleadosMasTicketsResponden = (req, res) => {
     });
 };
 
-// 10. Mostrar empleados que son clientes y generaron tickets
+// 10. Empleados que son clientes y generaron tickets
 exports.empleadosClientesGeneraronTicket = (req, res) => {
     var condition = [ 
         {

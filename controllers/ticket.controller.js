@@ -100,7 +100,7 @@ exports.operacSopTecLanBanAvell = (req, res) => {
     });
 };
 
-// 8. Mostrar la cantidad de tickets en la ZONA 1
+// 8. Cantidad de tickets en una zona determinada
 exports.ticketsZona1 = (req, res) => {
     var condition = { 
         "cliente.ubicacion.ubicacion_geo": { 
@@ -130,7 +130,7 @@ exports.ticketsZona1 = (req, res) => {
     });
 };
 
-// 9. Mostrar tickets creados por clientes que residen sobre la calle "Combate de los Pozos" (CABA)
+// 9. Tickets creados por clientes que residen sobre la calle "Combate de los Pozos" (CABA)
 exports.ticketsCombateDeLosPozos = (req, res) => {
     var condition = { 
         $and: [ 
@@ -150,7 +150,7 @@ exports.ticketsCombateDeLosPozos = (req, res) => {
     });
 };
 
-// 11. Mostrar tickets creados en Banfield o Lanús
+// 11. Último ticket creado en Lanús o Banfield
 exports.ticketsBanfieldLanus = (req, res) => {
     var condition = { 
         $or: [ 
@@ -159,7 +159,7 @@ exports.ticketsBanfieldLanus = (req, res) => {
         ] 
     };
 
-    db.getInstance().collection('tickets').find(condition).toArray().then(data => {
+    db.getInstance().collection('tickets').find(condition).limit(1).toArray().then(data => {
         res.send(data);
     })
     .catch(err => {
