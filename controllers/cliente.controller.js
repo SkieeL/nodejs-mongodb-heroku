@@ -69,16 +69,27 @@ exports.clientesCercanosSopTec = (req, res) => {
     db.getInstance().collection('oficinas').findOne({ nombre_oficina: "Soporte técnico 001" }).then(data => {
         var soptec001 = data;
 
-        var condition = { 
-            "ubicacion.ubicacion_geo": { 
-                $near: { 
-                    $geometry: soptec001.ubicacion.ubicacion_geo, 
-                    $maxDistance: 10000 
-                } 
-            } 
-        };
+        var condition = [
+            {
+                $geoNear: {
+                    near: ubicacion_soptec001.ubicacion_geo,
+                    distanceField: "distancia",
+                    maxDistance: 5000
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    nombre: 1,
+                    apellido: 1,
+                    direccion: "$ubicacion.direccion",
+                    localidad: "$ubicacion.localidad.nombre",
+                    provincia: "$ubicacion.provincia"
+                }
+            }
+        ];
     
-        db.getInstance().collection('clientes').find(condition).toArray().then(data => {
+        db.getInstance().collection('clientes').aggregate(condition).toArray().then(data => {
             res.send(data);
         })
         .catch(err => {
