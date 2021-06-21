@@ -150,7 +150,7 @@ exports.ticketsCombateDeLosPozos = (req, res) => {
     });
 };
 
-// 11. Último ticket creado en Lanús o Banfield
+// 11. Último ticket generado en Lanús o Banfield
 exports.ticketsBanfieldLanus = (req, res) => {
     var condition = { 
         $or: [ 
@@ -170,7 +170,7 @@ exports.ticketsBanfieldLanus = (req, res) => {
     });
 };
 
-// 12. Mostrar todos los tickets creados excepto los de Banfield o Lanús
+// 12. Tickets creados fuera de Lanús o Banfield
 exports.todosMenosBanfieldLanus = (req, res) => {
     var condition = { 
         "cliente.ubicacion.localidad.nombre": { $nin: [ "Banfield", "Lanús" ] } 
