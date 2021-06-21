@@ -62,7 +62,7 @@ exports.cantTicketsSinResolverLoc = (req, res) => {
     });
 };
 
-// 6. Listar operaciones realizadas por el área de Soporte técnico a clientes de Lanús, Banfield o Avellaneda
+// 6. Operaciones realizadas por el área de Soporte técnico a clientes de Lanús, Banfield o Avellaneda
 exports.operacSopTecLanBanAvell = (req, res) => {
     var condition = [ 
         {
